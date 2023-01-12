@@ -1,0 +1,47 @@
+{
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "uint8",
+                    "name": "_doorNumber",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_currentTime",
+                    "type": "string"
+                }
+            ],
+            "name": "takeTime",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "times",
+            "outputs": [
+                {
+                    "internalType": "uint8",
+                    "name": "doorNumber",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "string",
+                    "name": "currentTime",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]
+}
+
