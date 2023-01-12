@@ -13,11 +13,12 @@ function App() {
   const [currentDate, setCurrentDate] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const [takeTime, setTakeTime] = useState([]);
-  const [signedTime, setSignedTime] = useState({doorNumber:0, time:""});
+  const [doorNumber, setDoorNumber] = useState("");
+  const [signedTime, setSignedTime] = useState("");
+  const [times, setTimes] = useState([]);
 
   const connection = useConnection();
   const contract = useContract(raceTimerAddress, racekronojson.abi);
-
 
 
   const flyingFinish = (e) => {
@@ -67,19 +68,23 @@ function App() {
 
 
 
-  const signer = (e) => {
-      setSignedTime(e.target.parentNode.children[0].value, e.target.parentNode.children[1].value);
+  const signer = async (e) => {
+
+    const txn = await contract.takeTime(doorNumber, signedTime);
+    await txn.wait();
+    listTimes();
       e.target.disabled = true;
       e.target.nextSibling.disabled = true;
       e.target.value="Signed";
       e.target.parentNode.children[0].disabled = true;
       e.target.parentNode.style.backgroundColor = "yellowgreen";
-
-      console.log(e.target.parentNode.children[1])
-
-    
-      //console.log(e.target.parentNode, currentTime);
+      setDoorNumber(e.target.parentNode.children[0].value);
+   
   };
+
+
+  
+
 
 
   const canceler = (e) => {
@@ -90,7 +95,7 @@ function App() {
       e.target.parentNode.style.backgroundColor = "pink";
 
 
-      //console.log(e.target.parentNode.children[0].value, e.target.parentNode);     
+
   };
 
 
@@ -115,6 +120,25 @@ function App() {
   }  
   );  
 
+  const listTimes = async () => {
+
+    //kontrattan dönen değeri data değişkeninde tutuyoruz.
+    //kontrattan bir array dönüyor.
+    const data = await contract.list();
+    //
+    const items = await Promise.all(data.map(async i => {
+      //döngünün her bir adımında bir nesne oluşturuyoruz.
+      let item = {
+        doorNumber: i.doorNumber,
+        signedTime: i.currentTime
+      }
+      return item
+    }))
+    //döngü sonucunda dolan items arrayini tasks state'imize koyuyoruz.
+    setTimes(items);
+    console.log(items);
+  }
+
  
 //----------------------------
   useEffect(() => {
@@ -136,17 +160,28 @@ function App() {
     
     <Container>
       <Row>
-      <Col md={3}> <h1>COL-1</h1></Col>
+      <Col md={3}>
+        {connection.address && (
+        <p>
+          {connection.address}
+        </p>
+        )}
+      </Col>
+
       <Col xs={12} md={6}>
 
         <ListGroup>
           {listItems}
         </ListGroup>
       </Col>
-      <Col md={3}> <h1>{}</h1></Col>
+      <Col md={3}> {doorNumber} {times?.map((time, i) => (
+        <div key={i}>
+          <h1>{time.doorNumber}{time.currentTime}</h1>
+        </div>))}
+        {doorNumber}
+        </Col>
       </Row>
-      
-  
+        
       </Container>
     </>
 

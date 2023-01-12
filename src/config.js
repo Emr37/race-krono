@@ -1,2 +1,2 @@
-export const raceTimerAddress = "0xDA0bab807633f07f013f94DD0E6A4F96F8742B53"
+export const raceTimerAddress = "0x358AA13c52544ECCEF6B0ADD0f801012ADAD5eE3"
  

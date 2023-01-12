@@ -3,9 +3,9 @@
         {
             "inputs": [
                 {
-                    "internalType": "uint8",
+                    "internalType": "string",
                     "name": "_doorNumber",
-                    "type": "uint8"
+                    "type": "string"
                 },
                 {
                     "internalType": "string",
@@ -29,9 +29,9 @@
             "name": "times",
             "outputs": [
                 {
-                    "internalType": "uint8",
+                    "internalType": "string",
                     "name": "doorNumber",
-                    "type": "uint8"
+                    "type": "string"
                 },
                 {
                     "internalType": "string",
