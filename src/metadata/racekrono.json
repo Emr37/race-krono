@@ -1,6 +1,44 @@
 {
     "abi": [
         {
+            "inputs": [],
+            "name": "list",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "string",
+                            "name": "doorNumber",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "finishTime",
+                            "type": "string"
+                        }
+                    ],
+                    "internalType": "struct RaceKrono.Time[]",
+                    "name": "",
+                    "type": "tuple[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "index",
+                    "type": "uint256"
+                }
+            ],
+            "name": "removeTime",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
             "inputs": [
                 {
                     "internalType": "string",
@@ -9,7 +47,7 @@
                 },
                 {
                     "internalType": "string",
-                    "name": "_currentTime",
+                    "name": "_finishTime",
                     "type": "string"
                 }
             ],
@@ -35,7 +73,7 @@
                 },
                 {
                     "internalType": "string",
-                    "name": "currentTime",
+                    "name": "finishTime",
                     "type": "string"
                 }
             ],

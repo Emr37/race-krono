@@ -13,7 +13,7 @@
 .par {
   color: white;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   font-weight: bold;
   padding: 0px;
@@ -44,13 +44,22 @@
   justify-content: center;
   margin-right:1vh;
   padding: 0;
+  align-items: center;
 }
 
 .form-control {
   width: min-content;
-  font-size: 1.25rem;
+  font-size: 2rem;
 }
 
+
+
+.wallet-address {
+  justify-content:center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  color:yellowgreen
+}
 
 
 
