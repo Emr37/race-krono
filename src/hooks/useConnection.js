@@ -45,20 +45,3 @@ const useConnection = () => {
 
 export default useConnection;
 
-
-
-
-
-
-// function connect() {
-//     if (!window.alert) {
-//         alert("metamask is not installed!");
-//         return;
-//     }
-
-//     const provider = new ethers.providers.Web3Provider(window.ethereum);
-//     provider
-//         .send("eth_requestAccounts", [])
-//         .then((accounts) => setAccount(accounts[0]))
-//         .catch((err) => console.log(err))
-// }
